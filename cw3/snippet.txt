@@ -1,0 +1,12 @@
+((\w+:.\w+@\w+\.\w+)|(\w+-\w+:).((\d.\d)|(\w+.\d.\d\.\d.\d.\(\w\d\d\/\d{8}\)))) -> regex pattern dla kazdej z linii
+
+(\w+-\w+:).(\d.\d|\w+.\d.\d\.\d.\d.\(\w\d\d\/\d{8}\)) - regex pattern dla całej drugiej i trzeciej linii
+
+((\w+:.\w+)@(\w+\.\w+)) -> regex pattern dla pierwszej i ostatniej linii
+
+(\w+-\w+:)|(\w+:) -> regex pattern dla kluczy
+
+((\w+?)@(\w*\.\w{2,3}))|(\d\.\d)|(\w+.\d\.\d\.\d\.\d.\(\w\d\d\/\d{8}\)) -> regex pattern dla wartosci
+
+
+([A-z].*)(:\s)(.*\S) -> pattern dla zadania - grupy 1klucz-2lacznik-3wartosc
