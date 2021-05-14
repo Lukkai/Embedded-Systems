@@ -1,3 +1,3 @@
 # Embedded-Systems
 
-Repository for Embedded Systems for learning purposes.
+Embedded Systems repository for learning purposes.
