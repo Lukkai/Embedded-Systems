@@ -55,4 +55,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             f = open("device.txt", "w")
             f.write(device)
             f.close()
-            
