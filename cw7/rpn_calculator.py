@@ -8,7 +8,7 @@ def calc(expr : str) -> str:
             res.append(str(eval(t)))
         return res[0] if res else 0
     except:
-        return "Error! Blednie wprowadzone dane"
+        return "# Error! Blednie wprowadzone dane"
 
 # exp = '40 4 * 3 3 - 70 +'
 # exp = input("RPN Calculator: ")

@@ -2,10 +2,10 @@ import socket
 
     
 HOST = ''
-PORT = 7000
+PORT = 2200
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST,PORT))
-    print('# Socket created')
+    print('Socket created')
 
     while True:
         msg = input()
@@ -13,6 +13,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = s.recv(1024)
         print(data.decode("UTF-8"))
         if msg.upper() == "END":
-            print('# Connection closed')
+            print('.Connection closed')
             break
     s.close()
