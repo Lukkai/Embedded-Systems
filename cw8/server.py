@@ -1,7 +1,7 @@
 import socket
-import ssl
 
-def web_body(device):
+#constructs html website with action buttons
+def website(device):
     html = """<html>
     <head>
     <title>Device state</title>
@@ -21,16 +21,18 @@ PORT = 2200
 
 device = "OFF"
 
+#read data from file
 with open("device.txt","r") as f:
     device = f.read()
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind((HOST, PORT))
+#create a socket, bind to port, listen up to 15s to accept incoming connection requests if lost connection
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind((HOST, PORT))
     print('Socket is now listening')
-    s.listen(15)
+    sock.listen(15)
     while True:
-        conn, addr = s.accept()
+        conn, addr = sock.accept()
         with conn:
             request = conn.recv(1024).decode()
             print('Content = %s' % request)
@@ -47,11 +49,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print('device OFF')
                 device = "OFF"
 
-            response = web_body(device)
+            response = website(device)
             conn.send(b'HTTP/1.1 200 OK\n')
             conn.send(b'Content-Type: text/html\n')
             conn.send(b'Connection: close\n\n')
             conn.sendall(response)
+            
+            #write simulated device state to file
             f = open("device.txt", "w")
             f.write(device)
             f.close()
