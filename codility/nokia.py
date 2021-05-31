@@ -17,5 +17,4 @@ salvation  = [LTE_list[each] for each in range(len(LTE_list)) if len(LTE_list[ea
 # for i in range(len(LTE_list)):
 #     if len(LTE_list[i])%2 != 0:
 #         salvation.append(LTE_list[i])
-
 print(salvation)
